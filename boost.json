@@ -1,0 +1,21 @@
+{
+  "$schema": "https://raw.githubusercontent.com/githubnext/copilot-scaffolding/main/boost.schema.json",
+  "name": "architect-forensics-expert",
+  "displayName": "Architect Forensics Expert",
+  "version": "1.0.0",
+  "description": "Universal reverse engineering, architecture audit, legacy recovery and modernization boost.",
+  "author": "Sergio Hierro Cinos / Microsoft Copilot generated",
+  "categories": [
+    "architecture",
+    "legacy",
+    "modernization",
+    "audit",
+    "cloud",
+    "ai",
+    "mcp",
+    "rag",
+    "devops",
+    "security"
+  ],
+  "entrypoint": ".github/copilot-instructions.md"
+}
