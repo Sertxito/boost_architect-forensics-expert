@@ -1,0 +1,15 @@
+theme: jekyll-theme-minimal
+
+title: Architect Forensics Expert
+description: Transform GitHub Copilot into a Principal Architect capable of forensic platform assessment and legacy system recovery
+
+show_downloads: false
+
+social-network-links:
+  github: Sertxito/boost_architect-forensics-expert
+
+plugins:
+  - jekyll-seo-tag
+
+markdown: kramdown
+highlighter: rouge
