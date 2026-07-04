@@ -1,0 +1,91 @@
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Dependencies
+node_modules/
+/dist
+/build
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Build artifacts
+out/
+dist/
+*.o
+*.a
+*.so
+
+# Temporary files
+*.tmp
+tmp/
+temp/
+
+# Editor backup files
+*~
+*.bak
+*.backup
+
+# VS Code extensions
+*.code-workspace
+
+# Azure local emulator
+local.settings.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+.pytest_cache/
+
+# Node
+npm-debug.log
+node_modules/
+
+# Misc
+.history/
+.vscode-settings.json
