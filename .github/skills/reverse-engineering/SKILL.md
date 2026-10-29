@@ -1,3 +1,8 @@
+---
+name: reverse-engineering
+description: 'Reconstruct unknown or undocumented systems from code, config, runtime topology and dependency evidence. This is the forensic archaeology skill: when "nobody knows how it works", this extracts the truth from artifacts.'
+---
+
 # Skill: Reverse Engineering
 
 ## Purpose

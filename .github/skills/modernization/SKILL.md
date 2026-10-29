@@ -1,3 +1,8 @@
+---
+name: modernization
+description: 'Design phased modernization roadmaps that balance value delivery, cost, risk, technical debt reduction, and dependency sequencing. Covers stabilization, refactoring, modularization, strangler patterns, replatforming, and selective replacement.'
+---
+
 # Skill: Modernization
 
 ## Purpose

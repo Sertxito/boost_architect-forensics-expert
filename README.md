@@ -94,18 +94,11 @@ Evidence-based assessment with 5 maturity bands and concrete decision guides:
 
 ### 1. **Install the Boost**
 
-Clone this repository or download as a GitHub Copilot boost:
-
 ```bash
-git clone https://github.com/Sertxito/boost_architect-forensics-expert.git
-cd boost_architect-forensics-expert
+npx github:Sertxito/boost_architect-forensics-expert
 ```
 
-### 2. **Activate in GitHub Copilot**
-
-1. Open GitHub Copilot in VS Code
-2. Load this repository as a boost (via awesome-copilot framework)
-3. Copilot transforms into Architect Forensics Expert mode
+Reload VS Code; agents, skills and prompts are picked up automatically (see [Installation](#installation)).
 
 ### 3. **Invoke the Main Agent**
 
@@ -372,19 +365,29 @@ Every finding includes:
 
 ## Installation
 
-### For GitHub Copilot Users (awesome-copilot)
+This boost is **self-contained**: it does not need any runtime, plugin or MCP server. One command copies its assets to the places where GitHub Copilot / VS Code discover them automatically.
 
-1. Clone or fork this repo
-2. In VS Code, open GitHub Copilot
-3. Load this repository as a boost (framework integration)
-4. Start using the agents and skills
+```bash
+# From the root of YOUR project
+npx github:Sertxito/boost_architect-forensics-expert
+# or, once published on npm
+npx boost-architect-forensics-expert
+```
 
-### For Enterprise Deployment
+| Asset | Installed into |
+|---|---|
+| Agents | `.github/agents/*.agent.md` |
+| Skills | `.github/skills/<name>/SKILL.md` and `.agents/skills/<name>/SKILL.md` |
+| Prompts | `.github/prompts/*.prompt.md` |
+| Instructions | `.github/instructions/*.instructions.md` |
+| Global instructions | `.github/copilot-instructions.md` (only if the project has none) |
 
-1. Host in internal Git repository
-2. Configure Copilot extensions to reference this boost
-3. Customize agents/skills for your organization
-4. Train teams on the framework and decision taxonomy
+Options: `--target <dir>`, `--force` (overwrite), `--dry-run`, `--no-agents-dir` (skip `.agents/skills`), `--check` (verify install), `--uninstall`.
+Existing files are never overwritten without `--force`, so several boosts can coexist in the same project.
+
+**Verify:** run `npx boost-architect-forensics-expert --check`, reload VS Code (`Developer: Reload Window`), then type `@` in Copilot Chat (agents), `/` (prompts) and open the *Configure Tools / Skills* picker.
+
+For enterprise deployment, host this repo in your internal Git and run `npx git+<internal-url>` from each project.
 
 ---
 
@@ -434,3 +437,12 @@ Inspired by:
 ---
 
 **Transform Copilot into your Principal Architect today.** 🚀
+
+## Naming and collisions
+
+Installed assets are prefixed with `forensics-` (e.g. `.github/agents/forensics-<name>.agent.md`, `.github/skills/forensics-<name>/`) so several boosts can live in the same project, and internal references are rewritten to match.
+
+- Nothing that already exists in the target is overwritten: each ignored file is reported with a `[WARN] ... already existed ... IGNORED` message. Use `--force` to overwrite.
+- An existing `.github/copilot-instructions.md` is kept; the boost's global guidance is installed as `forensics-global.instructions.md` instead.
+- Re-running the installer is safe; `--check` and `--uninstall` work from the manifest.
+

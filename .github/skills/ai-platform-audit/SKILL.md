@@ -1,3 +1,8 @@
+---
+name: ai-platform-audit
+description: 'Audit AI, RAG, MCP and agentic systems for architectural soundness, grounding quality, context window efficiency, tool governance, memory design, latency, cost and operational readiness.'
+---
+
 # Skill: AI Platform Audit
 
 ## Purpose

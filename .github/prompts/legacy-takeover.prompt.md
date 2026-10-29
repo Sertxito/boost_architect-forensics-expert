@@ -1,3 +1,7 @@
+---
+description: 'Legacy Takeover'
+---
+
 # Prompt: Legacy Takeover
 
 Act as Legacy Recovery Architect. Assume this system has poor documentation and has passed through several vendors.
