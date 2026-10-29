@@ -1,3 +1,8 @@
+---
+name: architecture-review
+description: 'Evaluate architecture quality, boundaries, coupling, scalability and maintainability. This skill produces findings at the component, subsystem, and system levels.'
+---
+
 # Skill: Architecture Review
 
 ## Purpose

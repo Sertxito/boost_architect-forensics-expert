@@ -1,3 +1,7 @@
+---
+description: 'Challenge Proposed Architecture'
+---
+
 # Prompt: Challenge Proposed Architecture
 
 Act as Architect Challenger. Review this proposed architecture and challenge it.

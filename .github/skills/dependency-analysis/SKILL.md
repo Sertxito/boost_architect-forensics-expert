@@ -1,3 +1,8 @@
+---
+name: dependency-analysis
+description: 'Map internal and external dependencies, identify coupling risks, version vulnerabilities, and ownership gaps. This is the connectivity auditing skill: understanding what depends on what, and what breaks if any piece fails.'
+---
+
 # Skill: Dependency Analysis
 
 ## Purpose

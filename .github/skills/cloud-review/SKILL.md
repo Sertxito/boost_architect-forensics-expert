@@ -1,3 +1,8 @@
+---
+name: cloud-review
+description: 'Assess cloud deployment for security posture, reliability architecture, operational maturity, cost efficiency and well-architected alignment. Works across Azure, AWS, GCP and hybrid environments.'
+---
+
 # Skill: Cloud Review
 
 ## Purpose

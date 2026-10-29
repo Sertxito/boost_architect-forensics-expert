@@ -1,3 +1,8 @@
+---
+name: legacy-analysis
+description: 'Assess legacy systems for hidden risks, modernization blockers, residual business value and safe evolution paths. This is the business-critical preservation skill: how to move without breaking.'
+---
+
 # Skill: Legacy Analysis
 
 ## Purpose

@@ -1,0 +1,55 @@
+{
+  "name": "boost-architect-forensics-expert",
+  "version": "1.0.0",
+  "description": "Universal reverse engineering, architecture audit, legacy recovery and modernization boost for GitHub Copilot.",
+  "type": "module",
+  "bin": {
+    "boost-architect-forensics-expert": "scripts/install.mjs"
+  },
+  "files": [
+    "boost.json",
+    ".github/agents",
+    ".github/skills",
+    ".github/prompts",
+    ".github/copilot-instructions.md",
+    "checklists",
+    "docs",
+    "examples",
+    "patterns",
+    "playbooks",
+    "scorecards",
+    "specs",
+    "templates",
+    "scripts",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "boost:install": "node scripts/install.mjs",
+    "boost:check": "node scripts/install.mjs --check"
+  },
+  "keywords": [
+    "boost",
+    "copilot",
+    "github-copilot",
+    "agent-skills",
+    "architecture",
+    "legacy",
+    "modernization",
+    "audit"
+  ],
+  "author": "Sergio Hierro Cinos",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sertxito/boost_architect-forensics-expert.git"
+  },
+  "homepage": "https://github.com/Sertxito/boost_architect-forensics-expert#readme",
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "boostPrefix": "forensics"
+}

@@ -1,3 +1,8 @@
+---
+name: security-audit
+description: 'Analyze architecture-level security risks, secrets management, authentication/authorization models, and security debt. This is NOT a penetration test—it''s a design-level audit.'
+---
+
 # Skill: Security Audit
 
 ## Purpose

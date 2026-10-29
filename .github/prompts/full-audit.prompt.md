@@ -1,3 +1,7 @@
+---
+description: 'Full Architecture Forensics Audit'
+---
+
 # Prompt: Full Architecture Forensics Audit
 
 Act as Architect Forensics Expert. Analyze this repository as if you had just inherited it from a client.
