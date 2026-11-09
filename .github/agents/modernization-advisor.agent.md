@@ -37,4 +37,4 @@ Designs realistic modernization strategies that balance value, cost and risk.
 - 12+ months: strategic transformation.
 
 > Roadmap template: `templates/modernization-roadmap.md`.
-> End every engagement with Final Decision Matrix (`templates/final-decision-matrix.md`).
+> For system-level modernization decisions, include the Final Decision Matrix (`templates/final-decision-matrix.md`); omit it for focused questions that do not request a platform-level decision.

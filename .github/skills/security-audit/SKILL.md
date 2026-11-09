@@ -84,7 +84,7 @@ Every finding MUST include:
 
 ## Output
 1. **Security Assessment** (`templates/audit-report.md`): Findings by severity, likelihood, and business impact.
-2. **Risk Register** (`templates/risk-matrix.md`): Security risks with CVSS scores.
+2. **Risk Register** (`templates/risk-matrix.md`): Security risks rated by likelihood and business impact. Use CVSS only for vulnerabilities with enough technical detail to score; do not assign CVSS to architectural or organizational risks.
 3. **Remediation Roadmap**: Priority order, effort estimates, business impact per fix.
 4. **Authentication/Authorization Model**: Diagrams, flow, roles, permissions.
 5. **Compliance Gap Analysis**: What's missing for GDPR/HIPAA/PCI-DSS/SOC2.

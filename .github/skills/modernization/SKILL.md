@@ -28,9 +28,9 @@ Reference `playbooks/modernization-roadmap.md`:
 - **Retire**: Stop maintaining. Only if business can afford to lose capability.
 
 ## Time Horizons
-- **0-30 Days**: Quick wins (security patches, bug fixes, config changes). ROI > 10x, effort < 1 sprint.
-- **1-3 Months**: High-ROI refactoring, test automation, observability. ROI > 5x, effort 1-3 sprints.
-- **3-6 Months**: Modularization, major dependency updates, platform migration pilots. ROI > 2x, effort > 3 sprints.
+- **0-30 Days**: Quick wins (security patches, bug fixes, config changes) with measurable outcomes and low coordination cost.
+- **1-3 Months**: Refactoring, test automation, or observability where evidence supports the expected value and capacity.
+- **3-6 Months**: Modularization, major dependency updates, or platform pilots sequenced by risk, dependencies, and business need.
 - **6-12 Months**: Full replatforming, strangler replacement, architectural overhaul. ROI uncertain, effort > 6 sprints.
 - **12+ Months**: Full rebuild decision. Justify on business case alone, not ROI.
 
@@ -84,3 +84,5 @@ Every finding MUST include:
 6. **Risk Register** (`templates/risk-matrix.md`): Execution risks, organizational risks, technical risks per initiative.
 7. **90-Day Execution Plan**: First 5-8 initiatives with task breakdown, owner, and success criteria.
 8. **Modernization Score** (`scorecards/modernization-score.md`): 0-100 baseline (current state) vs 0-100 target (1-year roadmap).
+
+Use `specs/scoring-methodology.md` for evidence, uncertainty, and aggregation. Never promise a fixed ROI from a time horizon; show estimate ranges and assumptions.

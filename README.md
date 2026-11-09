@@ -69,7 +69,7 @@ Each skill provides 6-7 step domain-specific analysis:
 - **ai-platform-audit** — Grounding quality, hallucination %, tool governance, AI cost control
 - **modernization** — Value vs Effort matrix, phased roadmaps (0-30d → 12m+), 90-day execution plans
 
-### 📊 **6 Calibrated Scorecards** (0-100 Scale)
+### 📊 **6 Evidence-Guided Scorecards** (0-100 Scale)
 
 Evidence-based assessment with 5 maturity bands and concrete decision guides:
 
@@ -86,7 +86,7 @@ Evidence-based assessment with 5 maturity bands and concrete decision guides:
 - **10 Checklists** — ai-platform, api, architecture-audit, backend, cloud, data, devops, frontend, legacy-system, security
 - **6 Pattern Catalogs** — ai-smells, anti-patterns, architecture-smells, cloud-smells, legacy-smells, technical-debt-patterns
 - **7 Playbooks** — platform-assessment, takeover-project, technical-due-diligence, migration-strategy, modernization-roadmap, no-documentation, unknown-system
-- **3 Specs** — finding-model (9-field mandatory format), decision-taxonomy, risk-levels
+- **4 Specs** — finding-model, decision-taxonomy, risk-levels, and evidence-based scoring methodology
 
 ---
 
@@ -94,26 +94,34 @@ Evidence-based assessment with 5 maturity bands and concrete decision guides:
 
 ### 1. **Install the Boost**
 
+After npm publication, run this from your project root:
+
+```bash
+npx boost-architect-forensics-expert
+```
+
+Before npm publication, use the GitHub-hosted package instead:
+
 ```bash
 npx github:Sertxito/boost_architect-forensics-expert
 ```
 
 Reload VS Code; agents, skills and prompts are picked up automatically (see [Installation](#installation)).
 
-### 3. **Invoke the Main Agent**
+### 2. **Invoke the Main Agent**
 
 ```
 @Architect Forensics - analyze this platform
 ```
 
-Copilot will:
-- Coordinate all 9 specialist agents
+The main agent will:
+- Select relevant specialists when delegation is available instead of invoking every specialist for every request
 - Map system architecture via reverse-engineering
 - Run comprehensive audits (cloud, security, performance, debt)
 - Produce findings using the mandatory 9-field format
 - Generate a final decision matrix (KEEP | REFACTOR | MODERNIZE | REPLATFORM | REBUILD)
 
-### 4. **Use Specialist Agents**
+### 3. **Use Specialist Agents**
 
 For focused analysis:
 
@@ -124,7 +132,7 @@ For focused analysis:
 @Legacy Recovery - help with this undocumented system
 ```
 
-### 5. **Apply Skills**
+### 4. **Apply Skills**
 
 Trigger specific analysis workflows:
 
@@ -178,16 +186,16 @@ Templates, Checklists, Patterns, Playbooks, Specs (Supporting Artifacts)
 ```
 .github/
 ├── agents/                          # 10 specialist agents
-│   ├── architect-forensics.md       # Main coordinator
-│   ├── ai-forensics.md
-│   ├── cloud-forensics.md
-│   ├── security-forensics.md
-│   ├── performance-forensics.md
-│   ├── legacy-recovery.md
-│   ├── modernization-advisor.md
-│   ├── technical-debt-assessor.md
-│   ├── architect-challenger.md
-│   └── due-diligence.md
+│   ├── architect-forensics.agent.md # Main coordinator
+│   ├── ai-forensics.agent.md
+│   ├── cloud-forensics.agent.md
+│   ├── security-forensics.agent.md
+│   ├── performance-forensics.agent.md
+│   ├── legacy-recovery.agent.md
+│   ├── modernization-advisor.agent.md
+│   ├── technical-debt-assessor.agent.md
+│   ├── architect-challenger.agent.md
+│   └── due-diligence.agent.md
 ├── skills/                          # 8 reusable skills
 │   ├── architecture-review/SKILL.md
 │   ├── reverse-engineering/SKILL.md
@@ -204,7 +212,10 @@ Templates, Checklists, Patterns, Playbooks, Specs (Supporting Artifacts)
 │   └── challenge-architecture.md
 └── copilot-instructions.md          # Main behavior rules
 
-scorecards/                          # 6 calibrated 0-100 scorecards
+.github/boosts/forensics/             # Target install path for checklists, docs, examples, patterns,
+                                      # playbooks, scorecards, specs and templates
+
+scorecards/                          # 6 evidence-guided 0-100 scorecards
 ├── cloud-maturity.md
 ├── security-maturity.md
 ├── technical-debt-score.md
@@ -252,12 +263,13 @@ playbooks/                           # 7 playbooks
 ├── no-documentation.md
 └── unknown-system.md
 
-specs/                               # 3 core specifications
+specs/                               # 4 core specifications
 ├── finding-model.md                 # 9-field mandatory format
 ├── decision-taxonomy.md             # KEEP/REFACTOR/MODERNIZE/REPLATFORM/REBUILD
-└── risk-levels.md                   # Critical/High/Medium/Low definitions
+├── risk-levels.md                   # Critical/High/Medium/Low definitions
+└── scoring-methodology.md           # Evidence, uncertainty and score aggregation
 
-examples/                            # 6 real-world case studies
+examples/                            # 6 illustrative case studies
 ├── angularjs-to-angular.md
 ├── legacy-dotnet-framework.md
 ├── mcp-platform-review.md
@@ -367,11 +379,16 @@ Every finding includes:
 
 This boost is **self-contained**: it does not need any runtime, plugin or MCP server. One command copies its assets to the places where GitHub Copilot / VS Code discover them automatically.
 
+After npm publication, run from the root of your project:
+
 ```bash
-# From the root of YOUR project
-npx github:Sertxito/boost_architect-forensics-expert
-# or, once published on npm
 npx boost-architect-forensics-expert
+```
+
+Before npm publication, use the GitHub-hosted package instead:
+
+```bash
+npx github:Sertxito/boost_architect-forensics-expert
 ```
 
 | Asset | Installed into |
@@ -381,11 +398,15 @@ npx boost-architect-forensics-expert
 | Prompts | `.github/prompts/*.prompt.md` |
 | Instructions | `.github/instructions/*.instructions.md` |
 | Global instructions | `.github/copilot-instructions.md` (only if the project has none) |
+| Reference material | `.github/boosts/forensics/{checklists,docs,examples,patterns,playbooks,scorecards,specs,templates}/` |
 
 Options: `--target <dir>`, `--force` (overwrite), `--dry-run`, `--no-agents-dir` (skip `.agents/skills`), `--check` (verify install), `--uninstall`.
 Existing files are never overwritten without `--force`, so several boosts can coexist in the same project.
+The installer prefixes Copilot assets and keeps reference material in its own boost-specific directory; Markdown references are rewritten to the installed paths.
 
-**Verify:** run `npx boost-architect-forensics-expert --check`, reload VS Code (`Developer: Reload Window`), then type `@` in Copilot Chat (agents), `/` (prompts) and open the *Configure Tools / Skills* picker.
+When developing this package, run `npm test` for installer regression tests and `npm run boost:check` to preview without changing files. The installer’s `--check` option verifies files expected from the current package and files recorded in an existing install manifest.
+
+**Verify:** after npm publication, run `npx boost-architect-forensics-expert --check`; before publication, use `npx github:Sertxito/boost_architect-forensics-expert --check`. Reload VS Code (`Developer: Reload Window`), then check `@` in Copilot Chat (agents), `/` (prompts), and the *Configure Tools / Skills* picker.
 
 For enterprise deployment, host this repo in your internal Git and run `npx git+<internal-url>` from each project.
 
@@ -405,6 +426,10 @@ Please submit PRs with:
 - Evidence-based findings (not generic best practices)
 - Template/checklist references
 - Priority guidance
+
+### Publishing to npm
+
+The `Publish npm package` GitHub Actions workflow publishes when a GitHub Release is published. Before using it, add an npm publishing token with access to this package as the repository Actions secret `NPM_TOKEN`. The release tag must match the `version` in `package.json`, with or without a leading `v` (for example, `v1.0.0`). The workflow runs `npm publish`, which executes the package's `prepublishOnly` tests and installer check.
 
 ---
 
@@ -445,4 +470,3 @@ Installed assets are prefixed with `forensics-` (e.g. `.github/agents/forensics-
 - Nothing that already exists in the target is overwritten: each ignored file is reported with a `[WARN] ... already existed ... IGNORED` message. Use `--force` to overwrite.
 - An existing `.github/copilot-instructions.md` is kept; the boost's global guidance is installed as `forensics-global.instructions.md` instead.
 - Re-running the installer is safe; `--check` and `--uninstall` work from the manifest.
-

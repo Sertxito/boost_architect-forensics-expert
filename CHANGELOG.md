@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Unreleased]
+
+### Added
+- Install reference materials alongside Copilot assets in a boost-specific directory.
+- Add automated installer regression tests and prepublish validation.
+- Add evidence-based scoring guidance shared by all scorecards.
+
+### Changed
+- Select specialists by relevance and scale report depth to the user's requested scope.
+- Update setup documentation to use the installer and document installed reference paths.
+
+### Fixed
+- Rewrite installed Markdown references to the installed support resources.
+- Stop presenting universal ROI and CVSS thresholds as suitable for every modernization or security risk.
+- Make installation checks validate expected support files as well as prior manifest entries.
+
 ## [1.0.0] - 2026-07-04
 
 ### 🎉 Initial Release: Architect Forensics Expert Boost

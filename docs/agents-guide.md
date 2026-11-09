@@ -7,13 +7,13 @@ title: Agents Guide
 
 ## The 10 Specialist Agents
 
-Each agent is a specialized forensics expert that can work independently or coordinate with others.
+Each agent provides a focused area of expertise. The coordinator selects specialists when their contribution is relevant and delegation is available; it does not invoke every agent by default.
 
 ---
 
 ## 🏛️ Architect Forensics (Main Coordinator)
 
-**Role:** Main coordinator; orchestrates all 9 specialists for comprehensive platform audits
+**Role:** Main coordinator; reconstructs the system and brings in relevant specialists for full audits
 
 **When to Use:**
 ```
@@ -22,7 +22,7 @@ Each agent is a specialized forensics expert that can work independently or coor
 ```
 
 **What It Does:**
-- Coordinates all 9 specialist agents
+- Selects relevant specialists when delegation is available
 - Maps system architecture
 - Runs comprehensive multi-domain audits
 - Produces findings using 9-field format

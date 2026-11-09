@@ -1,6 +1,7 @@
 # Scorecard: Modernization Score
 
 Score each dimension from 0 to 100 using evidence. Do not guess.
+Apply [`specs/scoring-methodology.md`](../specs/scoring-methodology.md). Cost, duration, and ROI examples below are illustrative; assess them against scoped estimates, assumptions, and the business case.
 
 ## Business Value Preservation
 
@@ -11,7 +12,7 @@ Score each dimension from 0 to 100 using evidence. Do not guess.
 **81-100**: Modernization enhances business; new capabilities enabled; competitive advantage clear; value exceeds cost by 3x+.
 
 - Score: /100
-- Evidence: (example: "Customer functionality 98% mapped; new analytics capability adds $2M revenue; modernization ROI 2.5x over 2yr")
+- Evidence: (example: "Customer functionality mapping reviewed against the current release; estimated benefits and migration costs documented with assumptions and confidence range")
 - Risk:
 - Recommendation:
 
@@ -69,11 +70,11 @@ Score each dimension from 0 to 100 using evidence. Do not guess.
 
 ## Cost/Value Balance
 
-**0-20**: Estimated cost > $10M or > 2 years; business value unclear; ROI negative or undefined.
-**21-40**: Cost $5-10M or 1-2 years; business value exists but fuzzy; ROI > 1x but payoff long.
-**41-60**: Cost $2-5M or 6-12 months; business value clear; ROI 1.5x+ over 3 years; cost-justified but tight.
-**61-80**: Cost $500k-2M or 3-6 months; business value strong; ROI 2x+ over 2 years; easy business case.
-**81-100**: Cost < $500k or < 3 months; business value exceptional; ROI 3x+ over 1 year; no-brainer investment.
+**0-20**: Cost and benefits are unscoped or unsupported; evidence suggests the initiative may destroy more value than it creates.
+**21-40**: Rough cost and benefit estimates exist, but key assumptions, dependencies, or lifecycle costs remain uncertain.
+**41-60**: Scoped estimates and expected benefits are documented; the case is viable but sensitive to important assumptions or constraints.
+**61-80**: Range-based estimates cover major dependencies and lifecycle costs; the case remains attractive under plausible variations.
+**81-100**: Independently reviewed business case with measurable outcomes, credible delivery capacity, and sensitivity analysis; value is robust against plausible changes.
 
 - Score: /100
 - Evidence:
@@ -82,7 +83,7 @@ Score each dimension from 0 to 100 using evidence. Do not guess.
 
 ## Overall Score
 
-Average is allowed only when all dimensions have evidence. Otherwise mark confidence as low.
+Do not average unknown or non-applicable dimensions. State evidence coverage, weighting, and why an aggregate is or is not defensible.
 
 **Confidence:** High / Medium / Low (do you have evidence for all dimensions?)
 
@@ -90,9 +91,11 @@ Average is allowed only when all dimensions have evidence. Otherwise mark confid
 
 ## Quick Decision Guide
 
-| Overall Score | Recommendation |
+| Supported overall score or dimension profile | Recommendation |
 |---|---|
-| 0-40 | **Do not modernize now.** Stabilize first. Re-evaluate in 6 months. |
-| 41-60 | **Pilot modernization.** Proof of concept, team training, then decide. |
-| 61-80 | **Proceed with caution.** Phased approach, limit scope, strong monitoring. |
-| 81-100 | **Proceed with confidence.** Ready to execute. Focus on team velocity. |
+| 0-40 | **Do not modernize now.** Stabilize first; re-evaluate when evidence and business conditions change. |
+| 41-60 | **Pilot selectively.** Validate the business case, team readiness, and migration risks before scaling. |
+| 61-80 | **Proceed in phases.** Use explicit success criteria, rollback, and monitoring. |
+| 81-100 | **Proceed when justified.** A high score is not a substitute for an approved business case or delivery plan. |
+
+Use this guide only when a supported aggregate score is available. Otherwise make a recommendation from the relevant dimensions and explain the evidence gaps.

@@ -1,6 +1,7 @@
 # Scorecard: Technical Debt Score
 
 Score each dimension from 0 to 100 using evidence. Do not guess.
+Apply [`specs/scoring-methodology.md`](../specs/scoring-methodology.md). Numeric ratios and thresholds below are illustrative signals, not universal targets; use only measured values with stated scope and method.
 
 ## Architecture Debt
 
@@ -95,6 +96,6 @@ Score each dimension from 0 to 100 using evidence. Do not guess.
 
 ## Overall Score
 
-Average is allowed only when all dimensions have evidence. Otherwise mark confidence as low.
+Do not average unknown or non-applicable dimensions. State evidence coverage, weighting, and why an aggregate is or is not defensible.
 
 **Confidence:** High / Medium / Low (do you have evidence for all dimensions?)

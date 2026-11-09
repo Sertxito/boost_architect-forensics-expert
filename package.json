@@ -26,7 +26,9 @@
   ],
   "scripts": {
     "boost:install": "node scripts/install.mjs",
-    "boost:check": "node scripts/install.mjs --check"
+    "boost:check": "node scripts/install.mjs --dry-run",
+    "test": "node --test",
+    "prepublishOnly": "npm test && npm run boost:check"
   },
   "keywords": [
     "boost",

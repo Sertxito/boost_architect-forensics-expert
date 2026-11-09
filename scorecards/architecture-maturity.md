@@ -1,6 +1,7 @@
 # Scorecard: Architecture Maturity
 
 Score each dimension from 0 to 100 using evidence. Do not guess.
+Apply [`specs/scoring-methodology.md`](../specs/scoring-methodology.md). Numeric ratios and thresholds below are illustrative signals, not universal requirements; do not infer them without measured evidence and relevant context.
 
 ## 0-20 Dangerous: architecture is implicit, fragile or undocumented
 
@@ -79,6 +80,6 @@ Score each dimension from 0 to 100 using evidence. Do not guess.
 
 ## Overall Score
 
-Average is allowed only when all dimensions have evidence. Otherwise mark confidence as low.
+Do not average unknown or non-applicable dimensions. State evidence coverage, weighting, and why an aggregate is or is not defensible.
 
 **Confidence:** High / Medium / Low (do you have evidence for all dimensions?)

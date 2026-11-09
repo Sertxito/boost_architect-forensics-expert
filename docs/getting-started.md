@@ -7,35 +7,35 @@ title: Getting Started
 
 ## Installation (5 Minutes)
 
-### Step 1: Clone the Repository
+### Step 1: Install the Boost into Your Project
 
 ```bash
-git clone https://github.com/Sertxito/boost_architect-forensics-expert.git
-cd boost_architect-forensics-expert
+npx boost-architect-forensics-expert
 ```
 
-### Step 2: Verify Contents
+Before npm publication, install from GitHub instead:
 
 ```bash
-# Check that all components are present
-ls -la .github/agents/        # 10 agents
-ls -la .github/skills/        # 8 skills
-ls -la scorecards/            # 6 scorecards
+npx github:Sertxito/boost_architect-forensics-expert
 ```
 
-You should see:
-- ✅ 10 `.md` files in `.github/agents/`
-- ✅ 8 skill folders in `.github/skills/` (each with `SKILL.md`)
-- ✅ 6 `.md` files in `scorecards/`
+### Step 2: Verify the Installation
 
-### Step 3: Load into GitHub Copilot
+After npm publication:
 
-1. Open **VS Code**
-2. Open **GitHub Copilot Chat**
-3. Look for **Boost** or **Custom Instructions** option
-4. Load this repository as a boost (awesome-copilot framework)
+```bash
+npx boost-architect-forensics-expert --check
+```
 
-Copilot should now recognize all agents, skills, and supporting artifacts.
+Before npm publication:
+
+```bash
+npx github:Sertxito/boost_architect-forensics-expert --check
+```
+
+### Step 3: Reload VS Code
+
+In VS Code, run **Developer: Reload Window**, then open GitHub Copilot Chat. Copilot assets are installed in `.github/agents`, `.github/skills`, and `.github/prompts`; supporting references are under `.github/boosts/forensics/`.
 
 ---
 
@@ -53,7 +53,7 @@ Open a chat with Copilot and type:
 
 Copilot will:
 
-1. ✅ Load all 10 specialist agents
+1. ✅ Reconstruct the system from available repository and runtime evidence
 2. ✅ Map the architecture via reverse-engineering
 3. ✅ Run comprehensive audits:
    - Architecture review (boundaries, coupling, scalability)

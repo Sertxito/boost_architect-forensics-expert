@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 // Standalone boost installer. No external dependencies, no runtime required.
-// Copies agents, skills, prompts and instructions to locations that GitHub Copilot / VS Code auto-discover:
+// Copies Copilot assets and supporting reference material into the target project:
 //   .github/agents/<prefix>-*.agent.md      .github/skills/<prefix>-*/SKILL.md  (+ .agents/skills/)
 //   .github/prompts/<prefix>-*.prompt.md    .github/instructions/<prefix>-*.instructions.md
 //   .github/copilot-instructions.md         (or <prefix>-global.instructions.md if the project already has one)
+//   .github/boosts/<prefix>/{checklists,docs,examples,patterns,playbooks,scorecards,specs,templates}
 // Every asset gets the boost prefix (package.json "boostPrefix") so several boosts coexist without collisions;
 // internal cross-references are rewritten accordingly. Existing files are never overwritten (unless --force)
 // and every ignored file is reported.
@@ -26,7 +27,7 @@ Usage: npx ${pkg.name} [--target <dir>] [--force] [--dry-run] [--no-agents-dir] 
   --dry-run        show what would happen
   --no-agents-dir  do not mirror skills into .agents/skills
   --uninstall      remove files installed by this boost (uses manifest)
-  --check          verify the installed files exist and are valid`);
+  --check          verify expected and previously installed files exist`);
   process.exit(0);
 }
 
@@ -47,6 +48,7 @@ if (flag('uninstall')) {
 
 const pre = (n) => (n.startsWith(`${prefix}-`) ? n : `${prefix}-${n}`);
 const EXT = { agents: '.agent.md', prompts: '.prompt.md', instructions: '.instructions.md' };
+const supportDirs = ['checklists', 'docs', 'examples', 'patterns', 'playbooks', 'scorecards', 'specs', 'templates'];
 const list = (kind) => { const d = src(kind); return d ? fs.readdirSync(d).filter((n) => n.endsWith(EXT[kind])).map((n) => ({ dir: d, file: n, base: n.slice(0, -EXT[kind].length) })) : []; };
 const skillDirs = () => { const d = src('skills'); return d ? fs.readdirSync(d, { withFileTypes: true }).filter((e) => e.isDirectory() && fs.existsSync(path.join(d, e.name, 'SKILL.md'))).map((e) => ({ dir: path.join(d, e.name), name: e.name })) : []; };
 function* walk(dir, base = '') {
@@ -74,6 +76,10 @@ if (names.length) {
     rules.push([new RegExp(`(^\\s*(?:name|agent):\\s*)(${s})\\s*$`, 'gm'), (_, q, n) => q + pre(n)]);
   }
 }
+rules.push([
+  new RegExp(`(?<![\\w./-])(${alt(supportDirs)})(?=/)`, 'g'),
+  (_, dir) => `.github/boosts/${prefix}/${dir}`
+]);
 const rewrite = (text) => rules.reduce((t, [re, fn]) => t.replace(re, fn), text);
 
 const plan = []; // {from,to,text?}
@@ -83,6 +89,11 @@ for (const s of skills) for (const rel of walk(s.dir)) {
   const isMd = rel.endsWith('.md');
   add(path.join(s.dir, rel), path.join(target, '.github', 'skills', pre(s.name), rel), isMd);
   if (!flag('no-agents-dir')) add(path.join(s.dir, rel), path.join(target, '.agents', 'skills', pre(s.name), rel), isMd);
+}
+for (const kind of supportDirs) {
+  const dir = src(kind);
+  if (!dir) continue;
+  for (const rel of walk(dir)) add(path.join(dir, rel), path.join(target, '.github', 'boosts', prefix, kind, rel), rel.endsWith('.md'));
 }
 
 const ci = src('copilot-instructions.md') ?? [path.join(pkgRoot, '.github', 'copilot-instructions.md')].find(fs.existsSync);
@@ -99,15 +110,16 @@ if (ci) {
 }
 
 if (flag('check')) {
-  const m = ownManifest.length ? ownManifest : plan.map((p) => norm(path.relative(target, p.to)));
+  const m = [...new Set([...ownManifest, ...plan.map((p) => norm(path.relative(target, p.to)))])];
   const missing = m.filter((f) => !fs.existsSync(path.join(target, f)));
   const count = (g) => m.filter(g).length;
-  console.log(`${pkg.name}: agents=${count((f) => /^\.github\/agents\/.+\.agent\.md$/.test(f))} skills=${count((f) => /^\.github\/skills\/[^/]+\/SKILL\.md$/.test(f))} prompts=${count((f) => f.endsWith('.prompt.md'))} instructions=${count((f) => f.endsWith('.instructions.md'))}`);
+  console.log(`${pkg.name}: agents=${count((f) => /^\.github\/agents\/.+\.agent\.md$/.test(f))} skills=${count((f) => /^\.github\/skills\/[^/]+\/SKILL\.md$/.test(f))} prompts=${count((f) => f.endsWith('.prompt.md'))} instructions=${count((f) => f.endsWith('.instructions.md'))} support=${count((f) => f.startsWith(`.github/boosts/${prefix}/`))}`);
   if (missing.length) { console.error(`Missing ${missing.length} files, e.g. ${missing[0]}`); process.exit(1); }
   console.log('OK: all installed files present.'); process.exit(0);
 }
 
 const written = [], ownSkipped = [], ignored = [];
+const supportRoot = norm(path.relative(target, path.join(target, '.github', 'boosts', prefix)));
 for (const p of plan) {
   const rel = norm(path.relative(target, p.to));
   if (fs.existsSync(p.to) && !force) {
@@ -134,5 +146,5 @@ if (ignored.length) {
   for (const [k, n] of byTop) console.warn(`  - ${k}${n > 1 ? ` (${n} files)` : ''}`);
   console.warn('  Use --force to overwrite them.\n');
 }
-console.log(`${dry ? '[dry-run] ' : ''}${pkg.name}@${pkg.version}: ${written.length} installed, ${ownSkipped.length} already installed by this boost, ${ignored.length} ignored (pre-existing) -> ${target}`);
+console.log(`${dry ? '[dry-run] ' : ''}${pkg.name}@${pkg.version}: ${written.length} installed, ${ownSkipped.length} already installed by this boost, ${ignored.length} ignored (pre-existing), support files=${plan.filter((p) => norm(path.relative(target, p.to)).startsWith(`${supportRoot}/`)).length} -> ${target}`);
 console.log('Reload VS Code (Developer: Reload Window) so Copilot picks up agents, skills, prompts and instructions.');

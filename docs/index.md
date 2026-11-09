@@ -31,16 +31,35 @@ A comprehensive **GitHub Copilot boost** that transforms Copilot into an autonom
 
 ## Quick Start
 
-### 1. Clone the Repository
+### 1. Install the Boost
+
+Run one command from the root of the project where you want Copilot assets installed.
 
 ```bash
-git clone https://github.com/Sertxito/boost_architect-forensics-expert.git
-cd boost_architect-forensics-expert
+npx boost-architect-forensics-expert
 ```
 
-### 2. Load as GitHub Copilot Boost
+Before npm publication, install from GitHub instead:
 
-Open GitHub Copilot in VS Code and load this repository as a boost (awesome-copilot framework).
+```bash
+npx github:Sertxito/boost_architect-forensics-expert
+```
+
+### 2. Verify and reload VS Code
+
+After npm publication:
+
+```bash
+npx boost-architect-forensics-expert --check
+```
+
+Before npm publication:
+
+```bash
+npx github:Sertxito/boost_architect-forensics-expert --check
+```
+
+Reload VS Code with **Developer: Reload Window**. The installer places Copilot assets in their discovery locations and supporting references under `.github/boosts/forensics/`.
 
 ### 3. Invoke the Main Agent
 
@@ -48,7 +67,7 @@ Open GitHub Copilot in VS Code and load this repository as a boost (awesome-copi
 @Architect Forensics - analyze this platform
 ```
 
-Copilot will coordinate all 10 specialist agents to produce a comprehensive audit.
+The coordinator selects relevant specialist agents when delegation is available; it does not need to invoke every agent for every request.
 
 ---
 
@@ -56,7 +75,7 @@ Copilot will coordinate all 10 specialist agents to produce a comprehensive audi
 
 ### 🔍 10 Specialist Agents
 
-Each agent coordinates with others to provide specialized expertise:
+The coordinator may use these specialists when their expertise is relevant:
 
 | Agent | Focus |
 |-------|-------|
@@ -84,7 +103,7 @@ Each agent coordinates with others to provide specialized expertise:
 - `ai-platform-audit` — Grounding quality, hallucination tracking
 - `modernization` — Phased roadmaps (0-30d → 12m+)
 
-### 📊 6 Calibrated Scorecards
+### 📊 6 Evidence-Guided Scorecards
 
 Evidence-based 0-100 assessments with concrete decision guides:
 
@@ -101,7 +120,7 @@ Evidence-based 0-100 assessments with concrete decision guides:
 - **10 Checklists** — Comprehensive coverage across all domains
 - **6 Pattern Catalogs** — Anti-patterns, smells, red flags
 - **7 Playbooks** — Scenarios, processes, decision flows
-- **3 Specs** — Finding model, decision taxonomy, risk levels
+- **4 Specs** — Finding model, decision taxonomy, risk levels, scoring methodology
 
 ---
 
@@ -212,20 +231,24 @@ Produce an investment recommendation.
 
 ```
 .github/
-├── agents/           # 10 specialist agents
+├── agents/           # 10 specialist .agent.md files
 ├── skills/           # 8 reusable skills
 ├── prompts/          # Prompt templates
+├── workflows/        # Package validation workflow
 └── copilot-instructions.md
 
-scorecards/          # 6 calibrated 0-100 scorecards
+scorecards/          # 6 evidence-guided 0-100 scorecards
 templates/           # 9 output templates
 checklists/          # 10 domain checklists
 patterns/            # 6 pattern catalogs
 playbooks/           # 7 playbooks
-specs/               # 3 core specifications
-examples/            # 6 real-world case studies
+specs/               # 4 core specifications
+examples/            # 6 illustrative case studies
+scripts/             # Dependency-free installer
+test/                # Installer regression tests
 
 boost.json           # Boost manifest
+package.json         # npm package metadata and release checks
 CHANGELOG.md         # Release notes
 README.md            # Full documentation
 LICENSE              # MIT License
@@ -239,7 +262,7 @@ LICENSE              # MIT License
 
 1. **[Quick Start Guide](getting-started.md)** — 5-minute setup
 2. **[Agents Overview](agents-guide.md)** — Understand each specialist
-3. **[Playbooks](playbooks.md)** — Step-by-step scenarios
+3. **[Playbooks](https://github.com/Sertxito/boost_architect-forensics-expert/tree/main/playbooks)** — Step-by-step scenarios
 4. **[Case Studies](case-studies.md)** — Real-world examples
 
 ### For Power Users
@@ -257,7 +280,7 @@ LICENSE              # MIT License
 - [ ] Data Architecture Forensics agent
 - [ ] IoT Platform Auditor specialist
 - [ ] Additional pattern catalogs
-- [ ] 10+ real-world case studies
+- [ ] 10+ illustrative case studies
 
 ### v1.2.0 (Planned)
 - [ ] Video walkthroughs
