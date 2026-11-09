@@ -9,7 +9,7 @@ description: Transform Copilot into a Principal Architect capable of forensic pl
 > **Transform GitHub Copilot into a Principal Architect** capable of forensic platform assessment, legacy system recovery, and strategic modernization decisions.
 
 [![awesome-copilot](https://img.shields.io/badge/awesome-copilot-blue)](https://github.com/microsoft/copilot-extensions)
-[![GitHub release (v1.0.0)](https://img.shields.io/badge/release-v1.0.0-green)](https://github.com/Sertxito/boost_architect-forensics-expert/releases/tag/v1.0.0)
+[![GitHub release (1.0.0)](https://img.shields.io/badge/release-1.0.0-green)](https://github.com/Sertxito/boost_architect-forensics-expert/releases/tag/1.0.0)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![GitHub](https://img.shields.io/badge/github-Sertxito-black)](https://github.com/Sertxito/boost_architect-forensics-expert)
 
@@ -39,7 +39,7 @@ Run one command from the root of the project where you want Copilot assets insta
 npx boost-architect-forensics-expert
 ```
 
-Before npm publication, install from GitHub instead:
+Alternatively, install from the GitHub repository:
 
 ```bash
 npx github:Sertxito/boost_architect-forensics-expert
@@ -47,16 +47,10 @@ npx github:Sertxito/boost_architect-forensics-expert
 
 ### 2. Verify and reload VS Code
 
-After npm publication:
+From the project root:
 
 ```bash
 npx boost-architect-forensics-expert --check
-```
-
-Before npm publication:
-
-```bash
-npx github:Sertxito/boost_architect-forensics-expert --check
 ```
 
 Reload VS Code with **Developer: Reload Window**. The installer places Copilot assets in their discovery locations and supporting references under `.github/boosts/forensics/`.

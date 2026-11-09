@@ -13,7 +13,7 @@ title: Getting Started
 npx boost-architect-forensics-expert
 ```
 
-Before npm publication, install from GitHub instead:
+Alternatively, install from the GitHub repository:
 
 ```bash
 npx github:Sertxito/boost_architect-forensics-expert
@@ -21,16 +21,10 @@ npx github:Sertxito/boost_architect-forensics-expert
 
 ### Step 2: Verify the Installation
 
-After npm publication:
+From the project root:
 
 ```bash
 npx boost-architect-forensics-expert --check
-```
-
-Before npm publication:
-
-```bash
-npx github:Sertxito/boost_architect-forensics-expert --check
 ```
 
 ### Step 3: Reload VS Code

@@ -94,13 +94,13 @@ Evidence-based assessment with 5 maturity bands and concrete decision guides:
 
 ### 1. **Install the Boost**
 
-After npm publication, run this from your project root:
+Run this from your project root:
 
 ```bash
 npx boost-architect-forensics-expert
 ```
 
-Before npm publication, use the GitHub-hosted package instead:
+Alternatively, install from the GitHub repository:
 
 ```bash
 npx github:Sertxito/boost_architect-forensics-expert
@@ -377,15 +377,15 @@ Every finding includes:
 
 ## Installation
 
-This boost is **self-contained**: it does not need any runtime, plugin or MCP server. One command copies its assets to the places where GitHub Copilot / VS Code discover them automatically.
+This boost needs Node.js 18 or later and npm, but no additional runtime, plugin or MCP server. One command copies its assets to the places where GitHub Copilot / VS Code can discover them.
 
-After npm publication, run from the root of your project:
+Run from the root of your project:
 
 ```bash
 npx boost-architect-forensics-expert
 ```
 
-Before npm publication, use the GitHub-hosted package instead:
+Alternatively, install from the GitHub repository:
 
 ```bash
 npx github:Sertxito/boost_architect-forensics-expert
@@ -406,7 +406,7 @@ The installer prefixes Copilot assets and keeps reference material in its own bo
 
 When developing this package, run `npm test` for installer regression tests and `npm run boost:check` to preview without changing files. The installer’s `--check` option verifies files expected from the current package and files recorded in an existing install manifest.
 
-**Verify:** after npm publication, run `npx boost-architect-forensics-expert --check`; before publication, use `npx github:Sertxito/boost_architect-forensics-expert --check`. Reload VS Code (`Developer: Reload Window`), then check `@` in Copilot Chat (agents), `/` (prompts), and the *Configure Tools / Skills* picker.
+**Verify:** run `npx boost-architect-forensics-expert --check` from the project root. Reload VS Code (`Developer: Reload Window`), then check `@` in Copilot Chat (agents), `/` (prompts), and the *Configure Tools / Skills* picker.
 
 For enterprise deployment, host this repo in your internal Git and run `npx git+<internal-url>` from each project.
 
